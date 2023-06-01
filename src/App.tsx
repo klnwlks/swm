@@ -3,9 +3,12 @@ import type { Component } from 'solid-js';
 const App: Component = () => {
   return (
     <div>
-      <h1> hi </h1>
+      <div class='desktop'> 
+      </div>
+
+      <div class='taskbar'>
+      </div>
     </div>
   );
 };
 
-export default App;
