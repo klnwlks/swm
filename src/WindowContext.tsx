@@ -13,21 +13,18 @@ export const WindowProvider = (props: any) => {
     {
       open(w: IWindow) {
 	setWindows(wl => [...wl, w])
+	console.log(windows())
       },
       minimize(id: number) {
 	let temp = [...windows()]
-	temp[id].state = EState.MINIMIZED
+	if (temp[id].state = EState.MINIMIZED) temp[id].state = EState.FOCUSED
+	else temp[id].state = EState.MINIMIZED 
 	setWindows(temp)
       },
       toggleMaximize(id: number) {
 	let temp = [...windows()].map((win) => ({
 	  ...win,  isMaximized: win.id == id	
 	}))
-	setWindows(temp)
-      },
-      unminimize(id: number) {
-	let temp = [...windows()]
-	temp[id].state = EState.FOCUSED
 	setWindows(temp)
       },
       // these two functions are likely expensive in terms of cpu usage, possibly rewrite later using

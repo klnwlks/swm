@@ -3,16 +3,17 @@ import { Show } from "solid-js";
 
 interface IProps {
   open: (win: string) => void
-  img: string
+  img?: string
   title: string
   isTaskbar: boolean
+  toggleMinimize?: (i: number) => void
 }
 
-const Icon: Component = (props: any) => {
+const Icon: Component<IProps> = (props: IProps) => {
    return (
-    <div onClick={() => props.open(props.win)}>
+    <div onClick={() => props.open(props.title)}>
       <img src={props.img} />
-      <Show when={props.isTaskbar}>
+      <Show when={!props.isTaskbar}>
 	<p>{props.title}</p>
       </Show>
     </div>

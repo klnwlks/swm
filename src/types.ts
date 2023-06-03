@@ -5,9 +5,9 @@ export enum EState {
 }
 
 export interface IWindow {
-  title: string
+  title?: string
   name: string
-  icon: string
+  icon?: string
   position: {x: number, y:number}
   size: {w: number, h: number}
   id: number
