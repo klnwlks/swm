@@ -6,9 +6,10 @@ export enum EState {
 
 export interface IWindow {
   title: string
+  name: string
   icon: string
-  position: [x: number, y:number]
-  size: [w: number, h: number]
+  position: {x: number, y:number}
+  size: {w: number, h: number}
   id: number
   state: EState
   isMaximized: boolean 

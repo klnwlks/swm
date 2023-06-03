@@ -1,6 +1,14 @@
 import type { Component } from 'solid-js' 
 import { createSignal } from 'solid-js'
 import { createStore } from 'solid-js/store'
+import { IWindow } from '../types' 
+
+interface IProps {
+  winfo: IWindow 
+  minimize: (i: number) => void
+  maximize: (i: number) => void
+  close: (i: number) => void
+}
 
 const Window: Component = (props: any) => {
   const [isFocused, setFocus] = createSignal(true)
@@ -9,7 +17,7 @@ const Window: Component = (props: any) => {
   return (
     <div class='app'>
       <div class='titlebar'>
-	<p> {props.title} </p>
+	<p> {props.name} </p>
 
 	<div>
 	  <button />

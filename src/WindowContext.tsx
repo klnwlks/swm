@@ -7,7 +7,7 @@ const WindowContext = createContext()
 
 // this context provider will handle window manipulation and such. while the App.tsx (Desktop)
 // will be in charge of the rendering of the windows and etc.
-export function WindowProvider(props: any) {
+export const WindowProvider = (props: any) => {
   const [windows, setWindows] = createSignal<IWindow[]>([]), 
     windowList = [windows, 
     {
@@ -30,12 +30,14 @@ export function WindowProvider(props: any) {
 	temp[id].state = EState.FOCUSED
 	setWindows(temp)
       },
-      resize(id: number, size: [w: number, h:number ]) {
+      // these two functions are likely expensive in terms of cpu usage, possibly rewrite later using
+      // the memo and derived signals in solid.js
+      resize(id: number, size: {w: number, h:number }) {
 	let temp = [...windows()]
 	temp[id].size = size
 	setWindows(temp)
       },
-      move(id: number, position: [x: number, y:number ]) {
+      move(id: number, position: {x: number, y:number }) {
 	let temp = [...windows()]
 	temp[id].position = position
 	setWindows(temp)
